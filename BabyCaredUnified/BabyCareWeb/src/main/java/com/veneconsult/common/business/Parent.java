@@ -3,6 +3,7 @@
  */
 package com.veneconsult.common.business;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 
@@ -41,9 +42,8 @@ public class Parent extends AbstractPersistentObject{
 	@Column (name="PRT_LASTNAME", length=100, nullable=false)
 	private String lastname;
 	
-	@Column (name="PRT_RELATIONSHIP", nullable=false)
-	@Convert(converter=BooleanToIntegerConverter.class)
-    private Boolean relationship;
+	@Column (name="PRT_RELATIONSHIP",length=100, nullable=false)
+    private String relationship=RelationShipDefinition.FATHER.getRelationShip();
 		
 	@Column (name="PRT_PLACEEMPLOY", length=100, nullable=false)
 	private String placeemploy;
@@ -56,36 +56,29 @@ public class Parent extends AbstractPersistentObject{
     private java.util.Set<Children> childrens = new HashSet<Children>();
     	
 	@SuppressWarnings("deprecation")
-	@OneToMany(cascade= CascadeType.ALL)
-	@JoinColumn(name="Id")
-	@IndexColumn(name="idx")
-	private List<Address> address;
+	@OneToMany(cascade= CascadeType.ALL,mappedBy = "parent", orphanRemoval = true)
+	//@JoinColumn(name="Id")
+	//@IndexColumn(name="idx")
+	private List<Address> address=new ArrayList<Address>();
 	
 	@SuppressWarnings("deprecation")
-	@OneToMany(cascade= CascadeType.ALL)
-	@JoinColumn(name="Id")
-	@IndexColumn(name="idx")
-	private List<Phone> phone;
+	@OneToMany(cascade= CascadeType.ALL,mappedBy = "parent", orphanRemoval = true)
+	//@JoinColumn(name="Id")
+	//@IndexColumn(name="idx")
+	private List<Phone> phone=new ArrayList<Phone>();
 		
 	@OneToMany(cascade= CascadeType.ALL)
 	@JoinColumn(name="Id")
-	private List<Authorization> authorization;
+	private List<Authorization> authorization=new ArrayList<Authorization>();
 	
-	@SuppressWarnings("deprecation")
-	@OneToMany(cascade= CascadeType.ALL)
-	@JoinColumn(name="Id")
-	@IndexColumn(name="idx")
-	private List<Children> children;
 
-	@OneToMany(cascade= CascadeType.ALL)
-	@JoinColumn(name="Id")
-	private List<Relationship> relationShip;
+
 	
 	@SuppressWarnings("deprecation")
-	@OneToMany(cascade= CascadeType.ALL)
-	@JoinColumn(name="Id")
-	@IndexColumn(name="idx")
-	private List<Email> email;
+	@OneToMany(cascade= CascadeType.ALL,mappedBy = "parent", orphanRemoval = true)
+	//@JoinColumn(name="Id")
+	//@IndexColumn(name="idx")
+	private List<Email> email=new ArrayList<Email>();
 
 	/**
 	 * @return the firstname
@@ -118,14 +111,14 @@ public class Parent extends AbstractPersistentObject{
 	/**
 	 * @return the relationship
 	 */
-	public Boolean getRelationship() {
+	public String getRelationship() {
 		return relationship;
 	}
 
 	/**
 	 * @param relationship the relationship to set
 	 */
-	public void setRelationship(Boolean relationship) {
+	public void setRelationship(String relationship) {
 		this.relationship = relationship;
 	}
 
@@ -213,33 +206,8 @@ public class Parent extends AbstractPersistentObject{
 		this.authorization = authorization;
 	}
 
-	/**
-	 * @return the children
-	 */
-	public List<Children> getChildren() {
-		return children;
-	}
 
-	/**
-	 * @param children the children to set
-	 */
-	public void setChildren(List<Children> children) {
-		this.children = children;
-	}
 
-	/**
-	 * @return the relationShip
-	 */
-	public List<Relationship> getRelationShip() {
-		return relationShip;
-	}
-
-	/**
-	 * @param relationShip the relationShip to set
-	 */
-	public void setRelationShip(List<Relationship> relationShip) {
-		this.relationShip = relationShip;
-	}
 
 	/**
 	 * @return the email

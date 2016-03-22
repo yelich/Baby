@@ -27,15 +27,15 @@ public class Email extends AbstractPersistentObject {
 	private String addressemail;
 	
 	@ManyToOne
-	@JoinColumn(name="BC_PARENT_ID")
+	@JoinColumn(name="BC_PARENT_ID",nullable=true)
 	private Parent parent;
 	
 	@ManyToOne
-	@JoinColumn(name="BC_SCHOOL_ID")
+	@JoinColumn(name="BC_SCHOOL_ID",nullable=true)
 	private School school;
 	
 	@ManyToOne
-	@JoinColumn(name="BC_CHILDREN_ID")
+	@JoinColumn(name="BC_CHILDREN_ID",nullable=true)
 	private Children children;
 
 	/**

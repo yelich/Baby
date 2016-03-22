@@ -45,11 +45,12 @@ public class Feeds extends AbstractPersistentObject {
 	private String coin;
 	
 	@SuppressWarnings("deprecation")
-	@OneToMany(cascade= CascadeType.ALL)
-	@JoinColumn(name="Id")
-	@IndexColumn(name="idx")
+	@OneToMany(cascade= CascadeType.ALL,mappedBy = "feeds", orphanRemoval = true)
+	//@JoinColumn(name="Id")
+	//@IndexColumn(name="idx")
 	private List<School> school;
-	
+
+
 	@OneToOne(cascade=CascadeType.ALL)
 	@PrimaryKeyJoinColumn
 	private Activites activites;
@@ -115,6 +116,24 @@ public class Feeds extends AbstractPersistentObject {
 	 */
 	public static long getSerialversionuid() {
 		return serialVersionUID;
+	}
+	
+	
+	
+	public List<School> getSchool() {
+		return school;
+	}
+
+	public void setSchool(List<School> school) {
+		this.school = school;
+	}
+
+	public Activites getActivites() {
+		return activites;
+	}
+
+	public void setActivites(Activites activites) {
+		this.activites = activites;
 	}
 	
 	

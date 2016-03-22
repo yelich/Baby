@@ -19,7 +19,7 @@
         <class>com.veneconsult.common.business.Parent</class>
         <class>com.veneconsult.common.business.Pharmacy</class>
         <class>com.veneconsult.common.business.Phone</class>
-        <class>com.veneconsult.common.business.Relationship</class>
+       <!--  <class>com.veneconsult.common.business.Relationship</class>-->
         <class>com.veneconsult.common.business.School</class>
         <class>com.veneconsult.common.business.TopicalProduct</class>
         <class>com.veneconsult.common.business.Transportation</class>

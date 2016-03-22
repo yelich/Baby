@@ -3,6 +3,7 @@
  */
 package com.veneconsult.common.business;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -44,10 +45,10 @@ public class Transportation extends AbstractPersistentObject {
 
 
 	@SuppressWarnings("deprecation")
-	@OneToMany(cascade= CascadeType.ALL)
-	@JoinColumn(name="Id")
-	@IndexColumn(name="idx")
-	private List<Children> children;
+	@OneToMany(cascade= CascadeType.ALL,mappedBy = "transportation", orphanRemoval = true)
+	//@JoinColumn(name="Id")
+	//@IndexColumn(name="idx")
+	private List<Children> children=new ArrayList<Children>();
 
 
 	/**

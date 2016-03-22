@@ -48,13 +48,7 @@ public class User extends AbstractPersistentObject {
 	private String email;
     
 
-	//    @OneToMany(cascade=CascadeType.ALL)
-//    @JoinColumn(name="ID")
-//    @JoinTable(name="USER_ROLES",
-//    joinColumns = {@JoinColumn(name="user_id", referencedColumnName="id")},
-//    inverseJoinColumns = {@JoinColumn(name="role_id", referencedColumnName="id")}
-//    )
-    //@OneToMany(fetch = FetchType.EAGER,cascade=CascadeType.ALL, targetEntity=Role.class,mappedBy = "user")
+
     @OneToMany(cascade = CascadeType.ALL, 
     mappedBy = "user", orphanRemoval = true)
     private Set<Role> roles = new HashSet<Role>(0);

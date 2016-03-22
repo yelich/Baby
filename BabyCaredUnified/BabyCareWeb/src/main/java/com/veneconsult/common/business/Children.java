@@ -21,7 +21,11 @@ import org.hibernate.annotations.Table;
 
 
 
-import java.sql.Date;
+
+
+
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -65,9 +69,9 @@ public class Children extends AbstractPersistentObject {
 	@Column (name="CDN_LASTNAME", length=100, nullable=false)
 	private String lastname;
 	
-	@Column (name="CDN_PARENTS", nullable=false) //Tipo: Father, mother//
-	@Convert(converter=BooleanToIntegerConverter.class)
-    private Boolean parents;
+	//@Column (name="CDN_PARENTS", nullable=false) //Tipo: Father, mother//
+	//@Convert(converter=BooleanToIntegerConverter.class)
+    //private Boolean parents;
 	
 	
 	@Column (name="CDN_SEX", length=100, nullable=false)
@@ -77,10 +81,22 @@ public class Children extends AbstractPersistentObject {
 	private Date birth;
 	
 	@SuppressWarnings("deprecation")
-	@ManyToMany
-	@JoinColumn(name="BC_PARENT_ID")
-	@org.hibernate.annotations.ForeignKey(name="FK_Id")
-	private List<Parent> parent;
+	@ManyToMany(cascade = CascadeType.ALL)
+	@JoinTable(name = "Children_Parents",
+	    joinColumns = {
+	        @JoinColumn(
+	            name = "BC_CHILDREN_ID", 
+	            referencedColumnName = "ID"
+	        )
+	    },
+	    inverseJoinColumns = {
+	        @JoinColumn(
+	            name = "BC_PARENT_ID", 
+	            referencedColumnName = "ID"
+	        )
+	    }
+	)
+	private List<Parent> parent=new ArrayList<Parent>();
 	
 	
 	@OneToOne(cascade=CascadeType.ALL)
@@ -88,25 +104,22 @@ public class Children extends AbstractPersistentObject {
 	private School school;
 	
 	@SuppressWarnings("deprecation")
-	@OneToMany(cascade= CascadeType.ALL)
-	@JoinColumn(name="BC_PHONE_ID")
+	@OneToMany(cascade= CascadeType.ALL,mappedBy = "children", orphanRemoval = true)
+	//@JoinColumn(name="BC_PHONE_ID")
 	//@IndexColumn(name="idx")
-	private List<Phone> phone;
+	private List<Phone> phone=new ArrayList<Phone>();
 	
 	@SuppressWarnings("deprecation")
-	@OneToMany(cascade= CascadeType.ALL)
-	@JoinColumn(name="BC_EMAIL_ID")
+	@OneToMany(cascade= CascadeType.ALL,mappedBy = "children", orphanRemoval = true)
+	//@JoinColumn(name="BC_EMAIL_ID")
 	//@IndexColumn(name="idx")
-	private List<Email> email;
+	private List<Email> email=new ArrayList<Email>();
 	
 	@ManyToOne
-	@JoinColumn(name="BC_TRANSPORTATION_ID")
+	@JoinColumn(name="BC_TRANSPORTATION_ID",nullable=true)
 	private Transportation transportation;
 	
-	@SuppressWarnings({ "rawtypes", "unchecked" })
-	@ManyToMany(cascade = {CascadeType.ALL})
-	@JoinTable(name="ChildrenRelationship", joinColumns={@JoinColumn(name="BC_CHILDREN_ID")}, inverseJoinColumns={@JoinColumn(name="BC_RELASHIONSHIP_ID")})
-	private Set<Relationship> relationships=new HashSet();
+
 	
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	@ManyToMany(cascade = {CascadeType.ALL})
@@ -146,19 +159,7 @@ public class Children extends AbstractPersistentObject {
 		this.lastname = lastname;
 	}
 
-	/**
-	 * @return the parents
-	 */
-	public Boolean getParents() {
-		return parents;
-	}
 
-	/**
-	 * @param parents the parents to set
-	 */
-	public void setParents(Boolean parents) {
-		this.parents = parents;
-	}
 
 	/**
 	 * @return the sex
@@ -220,19 +221,7 @@ public class Children extends AbstractPersistentObject {
 		this.transportation = transportation;
 	}
 
-	/**
-	 * @return the relationships
-	 */
-	public Set<Relationship> getRelationships() {
-		return relationships;
-	}
 
-	/**
-	 * @param relationships the relationships to set
-	 */
-	public void setRelationships(Set<Relationship> relationships) {
-		this.relationships = relationships;
-	}
 
 	/**
 	 * @return the medicines

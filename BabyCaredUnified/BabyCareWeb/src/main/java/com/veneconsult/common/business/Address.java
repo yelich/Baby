@@ -49,7 +49,7 @@ public class Address extends AbstractPersistentObject {
 	private School school;
 	
 	@ManyToOne
-	@JoinColumn(name="Id")
+	@JoinColumn(name="BC_PARENT_ID", nullable=true)
 	private Parent parent;
 
 	/**

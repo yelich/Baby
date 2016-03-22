@@ -10,6 +10,7 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
@@ -51,16 +52,21 @@ public class School extends AbstractPersistentObject {
 	private Address address;
 	
 	@SuppressWarnings("deprecation")
-	@OneToMany(cascade= CascadeType.ALL)
-	@JoinColumn(name="Id")
-	@IndexColumn(name="idx")
-	private List<Email> email;
+	@OneToMany(cascade= CascadeType.ALL,mappedBy = "school", orphanRemoval = true)
+	//@JoinColumn(name="Id")
+	//@IndexColumn(name="idx")
+	private List<Email> email=new ArrayList<Email>();
 	
 	@SuppressWarnings("deprecation")
-	@OneToMany(cascade= CascadeType.ALL)
-	@JoinColumn(name="Id")
-	@IndexColumn(name="idx")
-	private List<Phone> phone;
+	//@OneToMany(cascade= CascadeType.ALL)
+	@OneToMany(cascade= CascadeType.ALL,mappedBy = "school", orphanRemoval = true)
+	//@JoinColumn(name="Id")
+	//@IndexColumn(name="idx")
+	private List<Phone> phone=new ArrayList<Phone>();
+	
+	@ManyToOne
+	@JoinColumn(name="BC_FEEDS_ID",nullable=true)
+	private Feeds feeds;
 	
 	public School(){
 		this.email=new ArrayList<Email>();

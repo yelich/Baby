@@ -37,9 +37,7 @@ public class Relationship extends AbstractPersistentObject {
 	@JoinColumn(name="Id")
 	private Parent parent;
 	
-	@SuppressWarnings({ "unchecked", "rawtypes" })
-	@ManyToMany(cascade = {CascadeType.ALL},mappedBy="relationships")
-	private Set<Children> childrens=new HashSet();
+
 
 	/**
 	 * @return the description
@@ -69,19 +67,7 @@ public class Relationship extends AbstractPersistentObject {
 		this.parent = parent;
 	}
 
-	/**
-	 * @return the childrens
-	 */
-	public Set<Children> getChildrens() {
-		return childrens;
-	}
 
-	/**
-	 * @param childrens the childrens to set
-	 */
-	public void setChildrens(Set<Children> childrens) {
-		this.childrens = childrens;
-	}
 
 	/**
 	 * @return the serialversionuid
