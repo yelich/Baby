@@ -18,48 +18,22 @@
 					<form id="allInputsFormValidation" class="form-horizontal"
 						action="" method="post" novalidate="">
 						<div class="content">
-							<legend>Administration of School</legend>
+							<legend>Administration of Notification</legend>
 							<fieldset>
 								<div class="form-group">
-									<label class="col-sm-2 control-label">Name</label>
+									<label class="col-sm-2 control-label">Description</label>
 									<div class="col-sm-3">
-										<input class="form-control" id="namescholl" type="text"
-											placeholder="ex: Name" />
+										<input class="form-control" id="description" type="text"
+											placeholder="ex: Full Time" />
 									</div>
-									<label class="col-sm-2 control-label">Grade</label>
+									<label class="col-sm-2 control-label">Date</label>
 									<div class="col-sm-3">
 										<input class="form-control" id="idDestination" type="text"
 											placeholder="ex: 03/15/2016" />
 									</div>
+									
 								</div>
-							</fieldset>
-							<fieldset>
-								<div class="form-group">
-									<label class="col-sm-2 control-label">Name principal</label>
-									<div class="col-sm-3">
-										<input class="form-control" id="namescholl" type="text"
-											placeholder="ex: Name" />
-									</div>
-									<label class="col-sm-2 control-label">Email</label>
-									<div class="col-sm-3">
-										<input class="form-control" id="idDestination" type="text"
-											placeholder="ex: 03/15/2016" />
-									</div>
-								</div>
-							</fieldset>
-							<fieldset>
-								<div class="form-group">
-									<label class="col-sm-2 control-label">Name principal</label>
-									<div class="col-sm-3">
-										<input class="form-control" id="namescholl" type="text"
-											placeholder="ex: Name" />
-									</div>
-									<label class="col-sm-2 control-label">Email</label>
-									<div class="col-sm-3">
-										<input class="form-control" id="idDestination" type="text"
-											placeholder="ex: 03/15/2016" />
-									</div>
-								</div>
+								
 							</fieldset>
 						</div>
 						<div class="footer text-center">

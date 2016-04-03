@@ -6,207 +6,325 @@
 	prefix="dec"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-
 <c:set var="url" value="${pageContext.request.contextPath}"></c:set>
-
 <c:url value="/j_spring_security_logout" var="logoutUrl" />
 <!doctype html>
 <html lang="en">
-<head>
-<meta charset="utf-8" />
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-<title>BabyCare Web Application</title>
-<meta
-	content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0'
-	name='viewport' />
-<meta name="viewport" content="width=device-width" />
+<div class="content">
+	<div class="container-fluid">
+		<div class="row">
+				<div class="col-md-8 col-md-offset-2">
+				<div id="wizardCard" class="card card-wizard">
+					<form id="wizardForm" action="" method="post"
+						novalidate="novalidate">
+						<div class="header text-center">
+							<h3 class="title">Aplication of Register</h3>
+							<p class="category">Register in multiple steps</p>
+						</div>
+						<div class="content">
+							<ul class="nav nav-pills">
+								<li class="active" style="width: 33.3333%;"><a
+									data-toggle="tab" href="#tab1" aria-expanded="true">
+										Personal Information</a></li>
+								<li style="width: 33.3333%;"><a data-toggle="tab"
+									href="#tab2">Job Information</a></li>
+								<li style="width: 33.3333%;"><a data-toggle="tab"
+									href="#tab3">Emergency Contacts</a></li>
+							</ul>
+							<div class="tab-content">
+								<div id="tab1" class="tab-pane active">
+									<h4 class="text-left">Parents(s) or Legal Guardian(s):</h4>
+									<div class="row">
+										<div class="col-md-4">
+											<div class="form-group">
+												<label>First Name<star>*</star></label> <input
+													class="form-control" type="text" name="firstname"
+													required="true" placeholder="ex: luis">
+											</div>
+										</div>
+										<div class="col-md-4">
+											<div class="form-group">
+												<label>Last Name<star>*</star></label> <input
+													class="form-control" type="text" name="lastname"
+													required="true" placeholder="ex: Briceno">
+											</div>
+										</div>
+										<div class="col-md-4">
+											<div class="form-group">
+												<label>Gender</label>
+												<div class="col-sm-10">
+													<label class="checkbox checkbox-inline"> <input
+														type="checkbox" data-toggle="checkbox" value="option1">Male
+													</label> <label class="checkbox checkbox-inline"> <input
+														type="checkbox" data-toggle="checkbox" value="option2">Famele
+													</label>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-md-4">
+											<div class="form-group">
+												<label class="control-label">Email<star>*</star></label> <input
+													class="form-control" type="text" name="email" email="true"
+													required="true" placeholder="ex: hello@babydaycare.com" />
+											</div>
+										</div>
+										<div class="col-md-4">
+											<div class="form-group">
+												<label>Relationship<star>*</star></label> <select
+													name="relationship" class="selectpicker"
+													data-title="Single Select"
+													data-style="btn-default btn-block"
+													data-menu-style="dropdown-blue" required="true">
+													<option value="father">Father</option>
+													<option value="mother">Mother</option>
+												</select>
+											</div>
+										</div>
+										<div class="col-md-4">
+											<div class="form-group">
+												<label class="control-label">Mobile phone<star>*</star></label>
+												<input class="form-control" type="text" name="phone"
+													number="true" required="true" placeholder="ex: 786-3677841" />
+											</div>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-md-12">
+											<div class="form-group">
+												<label>Address<star>*</star></label> <input
+													class="form-control" type="text" name="address"
+													required="true"
+													placeholder="ex: ld Mihail Kogalniceanu, nr. 8 Bl 1, Sc 1, Ap 09">
+											</div>
+										</div>
+									</div>
 
+									<div class="row">
+										<div class="col-md-4">
+											<div class="form-group">
+												<label>City</label> <input type="text" class="form-control"
+													type="text" name="city" placeholder="ex: Boston">
 
-<!-- Bootstrap core CSS     -->
-<link href="${url}/resources/assets/css/bootstrap.min.css"
-	rel="stylesheet" />
+											</div>
+										</div>
+										<div class="col-md-4">
+											<div class="form-group">
+												<label>Country</label> <input type="text"
+													class="form-control" type="text" name="country"
+													placeholder="ex: USA">
+											</div>
+										</div>
+										<div class="col-md-4">
+											<div class="form-group">
+												<label>Postal Code</label> <input class="form-control"
+													type="text" name="code" number="true"
+													placeholder="ex: 3331">
+											</div>
+										</div>
+									</div>
 
-<!--  Light Bootstrap Dashboard core CSS    -->
-<link href="${url}/resources/assets/css/light-bootstrap-dashboard.css"
-	rel="stylesheet" />
+								</div>
+								<!--  end tab1  -->
 
-<!--  CSS for Demo Purpose, don't include it in your project     -->
-<link href="${url}/resources/assets/css/demo.css" rel="stylesheet" />
+								<div id="tab2" class="tab-pane">
+									<h4 class="text-left">Parents(s) or Legal Guardian(s):</h4>
+									<div class="row">
+										<div class="col-md-4">
+											<div class="form-group">
+												<label>Company Name</label> <input class="form-control"
+													type="text" name="companyname"
+													placeholder="ex: BabyDayCare">
+											</div>
+										</div>
+										<div class="col-md-4">
+											<div class="form-group">
+												<label>Email address<star>*</star></label> <input
+													class="form-control" type="text" name="emailjob"
+													email="true" required="true"
+													placeholder="ex: hello@company.com">
+											</div>
+										</div>
+										<div class="col-md-4">
+											<div class="form-group">
+												<label>Office Phone<star>*</star></label> <input
+													class="form-control" type="text" name="officephone"
+													number="true" required="true" placeholder="ex: 786-3677841">
+											</div>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-md-12">
+											<div class="form-group">
+												<label>Job Address<star>*</star></label> <input
+													class="form-control" type="text" name="jobaddress"
+													required="true"
+													placeholder="ex: ld Mihail Kogalniceanu, nr. 8 Bl 1, Sc 1, Ap 09">
+											</div>
+										</div>
+									</div>
 
+									<div class="row">
+										<div class="col-md-4">
+											<div class="form-group">
+												<label>City</label> <input type="text" class="form-control"
+													type="text" name="jobcity" placeholder="ex: Boston">
 
-<!--     Fonts and icons     -->
-<link
-	href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css"
-	rel="stylesheet">
-<link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300'
-	rel='stylesheet' type='text/css'>
-<link href="${url}/resources/assets/css/pe-icon-7-stroke.css"
-	rel="stylesheet" />
-</head>
-<body>
+											</div>
+										</div>
+										<div class="col-md-4">
+											<div class="form-group">
+												<label>Country</label> <input type="text"
+													class="form-control" type="text" name="jobcountry"
+													placeholder="ex: USA">
+											</div>
+										</div>
+										<div class="col-md-4">
+											<div class="form-group">
+												<label>Postal Code</label> <input class="form-control"
+													type="text" name="jobcode" number="true"
+													placeholder="ex: 3331">
+											</div>
+										</div>
+									</div>
 
-			<div class="content">
-			<div class="container-fluid">
-				<div class="row">
-										
-					
+								</div>
+								<!--  end tab2  -->
+
+								<div id="tab3" class="tab-pane">
+									<h4 class="text-left">Parents(s) or Legal Guardian(s):</h4>
+									<div class="content">
+										<!--  Validate if this content is necesarry-->
+										<ul role="tablist" class="nav nav-tabs">
+											<li role="presentation" class="active"><a href="#agency"
+												data-toggle="tab">Emergency Contacts</a></li>
+											<li><a href="#map-logo" role="tab" data-toggle="tab">
+													<i class="fa fa-user-plus"></i>
+											</a></li>
+										</ul>
+
+										<div class="tab-content">
+											<div id="agency" class="tab-pane active">
+												<div class="row">
+													<div class="col-md-4">
+														<div class="form-group">
+															<label>First Name<star>*</star></label> <input
+																class="form-control" type="text" name="contactfirstname"
+																required="true" placeholder="ex: luis">
+														</div>
+													</div>
+													<div class="col-md-4">
+														<div class="form-group">
+															<label>Last Name<star>*</star></label> <input
+																class="form-control" type="text" name="contactlastname"
+																required="true" placeholder="ex: Briceno">
+														</div>
+													</div>
+													<div class="col-md-4">
+														<div class="form-group">
+															<label>Relationship<star>*</star></label> <select
+																name="contactrelationship" class="selectpicker"
+																data-title="Single Select"
+																data-style="btn-default btn-block"
+																data-menu-style="dropdown-blue" required="true">
+																<option value="id">Father</option>
+																<option value="ms">Mother</option>
+															</select>
+														</div>
+													</div>
+												</div>
+												<div class="row">
+													<div class="col-md-4">
+														<div class="form-group">
+															<label class="control-label">Place of Employment</label>
+															<input class="form-control" type="text"
+																name="contactemployment" required="true"
+																placeholder="ex: BabyDayCare">
+														</div>
+													</div>
+													<div class="col-md-4">
+														<div class="form-group">
+															<label class="control-label">Mobile phone<star>*</star></label>
+															<input class="form-control" type="text"
+																name="contactphone" number="true" required="true"
+																placeholder="ex: 786-3677841" />
+														</div>
+													</div>
+													<div class="col-md-4">
+														<div class="form-group">
+															<label class="control-label">Other Telephone
+																Number</label> <input class="form-control" type="text"
+																name="contactmobil" number="true" required="true"
+																placeholder="ex: 786-3677841" />
+														</div>
+													</div>
+												</div>
+												<div class="row">
+													<div class="col-md-12">
+														<div class="form-group">
+															<label>Address<star>*</star></label> <input
+																class="form-control" type="text" name="contactaddress"
+																required="true"
+																placeholder="ex: ld Mihail Kogalniceanu, nr. 8 Bl 1, Sc 1, Ap 09">
+														</div>
+													</div>
+												</div>
+												<div class="row">
+													<div class="col-md-4">
+														<div class="form-group">
+															<label>City</label> <input type="text"
+																class="form-control" type="text" name="contactcity"
+																placeholder="ex: Boston">
+														</div>
+													</div>
+													<div class="col-md-4">
+														<div class="form-group">
+															<label>Country</label> <input type="text"
+																class="form-control" type="text" name="contactcountry"
+																placeholder="ex: USA">
+														</div>
+													</div>
+													<div class="col-md-4">
+														<div class="form-group">
+															<label>Postal Code</label> <input class="form-control"
+																type="text" name="contactcode" number="true"
+																placeholder="ex: 3331">
+														</div>
+													</div>
+												</div>
+											</div>
+											<!--end agency>  -->
+
+										</div>
+										<!--end div class="tab-content">  -->
+
+									</div>
+									<!--end <div class="content">  -->
+
+								</div>
+								<!-- end <div id="tab3" class="tab-pane">-->
+
+							</div>
+							<!--end <div class="tab-content">  -->
+						</div>
+						<!--end <div class="content"> -->
+						<div class="footer">
+							<button
+								class="btn btn-default btn-fill btn-wd btn-back pull-left disabled"
+								type="button" style="display: none;">Back</button>
+							<button class="btn btn-info btn-fill btn-wd btn-next pull-right"
+								type="button" onclick="onTabShow()">Next</button>
+							<button
+								class="btn btn-info btn-fill btn-wd btn-finish pull-right"
+								onclick="onFinishWizard()" type="button">Finish</button>
+							<div class="clearfix"></div>
+						</div>
+
+					</form>
 				</div>
 			</div>
-		</div>
-	
-</body>
-<!--   Core JS Files   -->
-<script src="${url}/resources/assets/js/jquery.min.js"
-	type="text/javascript"></script>
-<script src="${url}/resources/assets/js/jquery-ui.min.js"
-	type="text/javascript"></script>
-<script src="${url}/resources/assets/js/bootstrap.min.js"
-	type="text/javascript"></script>
-
-
-<!--  Forms Validations Plugin -->
-<script src="${url}/resources/assets/js/jquery.validate.min.js"></script>
-
-<!--  Plugin for Date Time Picker and Full Calendar Plugin-->
-<script src="${url}/resources/assets/js/moment.min.js"></script>
-
-<!--  Date Time Picker Plugin is included in this js file -->
-<script src="${url}/resources/assets/js/bootstrap-datetimepicker.js"></script>
-
-<!--  Select Picker Plugin -->
-<script src="${url}/resources/assets/js/bootstrap-selectpicker.js"></script>
-
-<!--  Checkbox, Radio, Switch and Tags Input Plugins -->
-<script
-	src="${url}/resources/assets/js/bootstrap-checkbox-radio-switch-tags.js"></script>
-
-<!--  Charts Plugin -->
-<script src="${url}/resources/assets/js/chartist.min.js"></script>
-
-<!--  Notifications Plugin    -->
-<script src="${url}/resources/assets/js/bootstrap-notify.js"></script>
-
-<!-- Sweet Alert 2 plugin -->
-<script src="${url}/resources/assets/js/sweetalert2.js"></script>
-
-<!-- Vector Map plugin -->
-<script src="${url}/resources/assets/js/jquery-jvectormap.js"></script>
-
-<!--  Google Maps Plugin    -->
-<script src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
-
-<!-- Wizard Plugin    -->
-<script src="${url}/resources/assets/js/jquery.bootstrap.wizard.min.js"></script>
-
-<!--  Datatable Plugin    -->
-<script src="${url}/resources/assets/js/bootstrap-table.js"></script>
-
-<!--  Full Calendar Plugin    -->
-<script src="${url}/resources/assets/js/fullcalendar.min.js"></script>
-
-<!-- Light Bootstrap Dashboard Core javascript and methods -->
-<script src="${url}/resources/assets/js/light-bootstrap-dashboard.js"></script>
-
-<!-- Light Bootstrap Dashboard DEMO methods, don't include it in your project! -->
-<script src="${url}/resources/assets/js/demo.js"></script>
-
-<script type="text/javascript">
-        $().ready(function(){
-            
-            var $validator = $("#wizardForm").validate({
-    		  rules: {
-    		    email: {
-                    required: true,
-                    email: true,
-                    minlength: 5
-    		    },
-    		    first_name: {
-    		        required: false,
-                    minlength: 5
-    		    },
-    		    last_name: {
-    		        required: false,
-                    minlength: 5
-    		    },
-    		    website: {
-    		        required: true,
-                    minlength: 5,
-                    url: true
-    		    },
-    		    framework: {
-        		    required: false,
-        		    minlength: 4
-    		    },
-    		    cities: {
-        		    required: true
-    		    },
-    		    price:{
-        		    number: true
-    		    }
-    		  }
-    		});
-    
-     
-            
-            // you can also use the nav-pills-[blue | azure | green | orange | red] for a different color of wizard
-            
-            $('#wizardCard').bootstrapWizard({
-            	tabClass: 'nav nav-pills',            	
-            	nextSelector: '.btn-next',
-                previousSelector: '.btn-back',
-            	onNext: function(tab, navigation, index) {
-            		var $valid = $('#wizardForm').valid();
-    
-            		if(!$valid) {
-            			$validator.focusInvalid();
-            			return false;
-            		}
-            	},         
-                onInit : function(tab, navigation, index){
-                
-                    //check number of tabs and fill the entire row
-                    var $total = navigation.find('li').length;
-                    $width = 100/$total;
-                    
-                    $display_width = $(document).width();
-                    
-                    if($display_width < 600 && $total > 3){
-                       $width = 50;
-                    }
-                   navigation.find('li').css('width',$width + '%');                
-                },
-                onTabClick : function(tab, navigation, index){
-                    // Disable the posibility to click on tabs
-                    return false;
-                },
-                onTabShow: function(tab, navigation, index) {
-                    var $total = navigation.find('li').length;
-                    var $current = index+1;
-                    
-                    var wizard = navigation.closest('.card-wizard');
-                    
-                    // If it's the last tab then hide the last button and show the finish instead
-                    if($current >= $total) {
-                        $(wizard).find('.btn-next').hide();
-                        $(wizard).find('.btn-finish').show();
-                    } else if($current == 1){
-                        $(wizard).find('.btn-back').hide();
-                    } else {
-                        $(wizard).find('.btn-back').show();
-                        $(wizard).find('.btn-next').show();
-                        $(wizard).find('.btn-finish').hide();
-                    }
-                }
-                
-            });
-            
-        }); 
-        
-        function onFinishWizard(){
-            //here you can do something, sent the form to server via ajax and show a success message with swal
-            
-            swal("Good job!", "You clicked the finish button!", "success");
-        }   
-    </script>
-
+</div>
+	</div>
+</div>
 </html>

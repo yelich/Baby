@@ -51,17 +51,15 @@
 				<div id="registerItems" class="collapse in" aria-expanded="true"
 					style="">
 					<ul class="nav">
-						<li><a href="${url}/main/personalInformation">Personal
-								Information</a></li>
+						<li><a href="${url}/main/personalInformation">Personal Information</a></li>
 						<li><a href="${url}/main/childrenInformation">Children</a></li>
-						<li><a href="${url}/main/medicationsInformation/">Medications</a></li>
-						<li><a href="${url}/main/emergencyContact">Emergency
-								Contact</a></li>
-						<li><a href="${url}/main/activitesInformation/">Activities
-								Permission</a></li>
-						<li><a href="${url}/main/aditionalInformation">Information
-								Aditional</a></li>
-
+						<li><a href="${url}/main/medicationsInformation">Pre-Registration</a></li>
+						<li><a href="${url}/main/registration">Registration</a></li>
+						<li><a href="${url}/main/feesInformation">Fees</a></li>
+						<li><a href="${url}/main/schoolInformation">School</a></li>
+						<li><a href="${url}/main/servicesInformation">Services</a></li>
+						<li><a href="${url}/main/notificationInformation">Notifications</a></li>
+						<li><a href="${url}/main/holidaysInformation">Holidays/Vacations</a></li>
 					</ul>
 				</div>
 			</li>
